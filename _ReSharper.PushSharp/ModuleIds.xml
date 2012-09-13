@@ -1,0 +1,11 @@
+<Modules>
+  <Module PersistentId="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F" ModuleId="PushSharp.Google.Entities" />
+  <Module PersistentId="836F225F-6CD9-48DE-910C-70F8A7CF54AA" ModuleId="PushSharp.Common" />
+  <Module PersistentId="71E27C37-FBBF-481B-934B-1F7DBDE3C5D6" ModuleId="PushSharp.Google" />
+  <Module PersistentId="09414728-3728-4105-A149-EC2E315355F9" ModuleId="PushSharp" />
+  <Module PersistentId="83C67156-893D-4AFF-9169-DB34771989CB" ModuleId="PushSharp.Apple" />
+  <Module PersistentId="0EC3A31E-B869-4465-ABDC-90C2E3CCC17D" ModuleId="PushSharp.Windows" />
+  <Module PersistentId="9947F510-BA9A-4045-A648-BAB687D8F513" ModuleId="PushSharp.WindowsPhone" />
+  <Module PersistentId="5250980B-BD11-4201-B083-AEDB8C62C471" ModuleId="PushSharp.Blackberry" />
+  <Module PersistentId="1B9A3A8B-3690-4435-BF9C-B557BF2713DB" ModuleId="PushSharp.Sample" />
+</Modules>

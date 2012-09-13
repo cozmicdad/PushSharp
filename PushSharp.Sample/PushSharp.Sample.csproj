@@ -47,6 +47,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -79,6 +82,10 @@
       <Project>{836F225F-6CD9-48DE-910C-70F8A7CF54AA}</Project>
       <Name>PushSharp.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PushSharp.Google.Entities\PushSharp.Google.Entities.csproj">
+      <Project>{8AE729FD-DA50-4E4F-BE39-1F9FD468C29F}</Project>
+      <Name>PushSharp.Google.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PushSharp.WindowsPhone\PushSharp.WindowsPhone.csproj">
       <Project>{9947F510-BA9A-4045-A648-BAB687D8F513}</Project>
       <Name>PushSharp.WindowsPhone</Name>
@@ -94,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,28 +46,19 @@
     <Compile Include="..\PushSharp.Common\AssemblyVersionInfo.cs">
       <Link>AssemblyVersionInfo.cs</Link>
     </Compile>
-    <Compile Include="C2dm\C2dmFluentNotification.cs" />
-    <Compile Include="C2dm\C2dmNotification.cs" />
-    <Compile Include="C2dm\C2dmPushChannel.cs" />
-    <Compile Include="C2dm\C2dmPushChannelSettings.cs" />
-    <Compile Include="C2dm\C2dmPushService.cs" />
-    <Compile Include="C2dm\C2dmMessageTransportAsync.cs" />
-    <Compile Include="C2dm\C2dmMessageTransportResponse.cs" />
-    <Compile Include="C2dm\C2dmExceptions.cs" />
-    <Compile Include="Gcm\GcmFluentNotification.cs" />
     <Compile Include="Gcm\GcmPushChannel.cs" />
     <Compile Include="Gcm\GcmPushChannelSettings.cs" />
     <Compile Include="Gcm\GcmPushService.cs" />
-    <Compile Include="Gcm\GcmExceptions.cs" />
-    <Compile Include="Gcm\GcmMessageTransportAsync.cs" />
-    <Compile Include="Gcm\GcmMessageTransportResponse.cs" />
-    <Compile Include="Gcm\GcmNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PushSharp.Common\PushSharp.Common.csproj">
       <Project>{836F225F-6CD9-48DE-910C-70F8A7CF54AA}</Project>
       <Name>PushSharp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PushSharp.Google.Entities\PushSharp.Google.Entities.csproj">
+      <Project>{8AE729FD-DA50-4E4F-BE39-1F9FD468C29F}</Project>
+      <Name>PushSharp.Google.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

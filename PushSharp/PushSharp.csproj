@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +66,10 @@
       <Project>{836F225F-6CD9-48DE-910C-70F8A7CF54AA}</Project>
       <Name>PushSharp.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PushSharp.Google.Entities\PushSharp.Google.Entities.csproj">
+      <Project>{8AE729FD-DA50-4E4F-BE39-1F9FD468C29F}</Project>
+      <Name>PushSharp.Google.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PushSharp.WindowsPhone\PushSharp.WindowsPhone.csproj">
       <Project>{9947F510-BA9A-4045-A648-BAB687D8F513}</Project>
       <Name>PushSharp.WindowsPhone</Name>
@@ -71,6 +78,9 @@
       <Project>{0ec3a31e-b869-4465-abdc-90c2e3ccc17d}</Project>
       <Name>PushSharp.Windows</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

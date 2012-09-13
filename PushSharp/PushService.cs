@@ -14,7 +14,6 @@ namespace PushSharp
 		public bool WaitForQueuesToFinish { get; set; }
 				
 		Apple.ApplePushService appleService = null;
-		Android.C2dmPushService androidService = null;
 		WindowsPhone.WindowsPhonePushService wpService = null;
 		Windows.WindowsPushService winService = null;
 		Blackberry.BlackberryPushService bbService = null;
@@ -52,20 +51,6 @@ namespace PushSharp
 		{
 			if (appleService != null)
 				appleService.Stop(waitForQueueToFinish);
-		}
-
-		[Obsolete("Google has Deprecated C2DM, and you should now use GCM Instead.  See the StartGoogleCloudMessagingPushService(...) method!")]
-		public void StartAndroidPushService(Android.C2dmPushChannelSettings channelSettings, PushServiceSettings serviceSettings = null)
-		{
-			androidService = new Android.C2dmPushService(channelSettings, serviceSettings);
-			androidService.Events.RegisterProxyHandler(this.Events);
-		}
-
-		[Obsolete("Google has Deprecated C2DM, and you should now use GCM Instead.  See the StopGoogleCloudMessagingPushService() method!")]
-		public void StopAndroidPushService(bool waitForQueueToFinish = true)
-		{
-			if (androidService != null)
-				androidService.Stop(waitForQueueToFinish);
 		}
 
 		public void StartGoogleCloudMessagingPushService(Android.GcmPushChannelSettings channelSettings, PushServiceSettings serviceSettings = null)
@@ -123,9 +108,6 @@ namespace PushSharp
 				case PlatformType.Apple:
 					appleService.QueueNotification(notification);
 					break;
-				case PlatformType.AndroidC2dm:
-					androidService.QueueNotification(notification);
-					break;
 				case PlatformType.AndroidGcm:
 					gcmService.QueueNotification(notification);
 					break;
@@ -147,9 +129,6 @@ namespace PushSharp
 
 			if (appleService != null && !appleService.IsStopping)
 				tasks.Add(Task.Factory.StartNew(() => appleService.Stop(waitForQueuesToFinish)));
-
-			if (androidService != null && !androidService.IsStopping)
-				tasks.Add(Task.Factory.StartNew(() => androidService.Stop(waitForQueuesToFinish)));
 
 			if (gcmService != null && !gcmService.IsStopping)
 				tasks.Add(Task.Factory.StartNew(() => gcmService.Stop(waitForQueuesToFinish)));
