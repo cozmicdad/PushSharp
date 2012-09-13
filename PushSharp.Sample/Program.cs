@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
-using System.Text;
-using PushSharp;
-using PushSharp.Apple;
 using PushSharp.Android;
-using PushSharp.WindowsPhone;
+using PushSharp.Apple;
 using PushSharp.Windows;
+using PushSharp.WindowsPhone;
 
 namespace PushSharp.Sample
 {

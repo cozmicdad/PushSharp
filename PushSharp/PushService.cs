@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using PushSharp.Common;
 
 namespace PushSharp
 {
-	public class PushService : IDisposable
+	public class PushService : IDisposable, IPushService
 	{
 		public ChannelEvents Events;
 
@@ -22,13 +20,7 @@ namespace PushSharp
 		static PushService instance = null;
 		public static PushService Instance
 		{
-			get
-			{
-				if (instance == null)
-					instance = new PushService();
-
-				return instance;
-			}
+			get { return instance ?? (instance = new PushService()); }
 		}
 
 		public PushService()
