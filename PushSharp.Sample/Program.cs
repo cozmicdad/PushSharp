@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
-using PushSharp.Android;
+using System.Linq;
+using System.Text;
+using PushSharp;
 using PushSharp.Apple;
-using PushSharp.Windows;
+using PushSharp.Android;
 using PushSharp.WindowsPhone;
+using PushSharp.Windows;
 
 namespace PushSharp.Sample
 {
@@ -20,6 +25,8 @@ namespace PushSharp.Sample
 			push.Events.OnChannelException += new Common.ChannelEvents.ChannelExceptionDelegate(Events_OnChannelException);
 			push.Events.OnNotificationSendFailure += new Common.ChannelEvents.NotificationSendFailureDelegate(Events_OnNotificationSendFailure);
 			push.Events.OnNotificationSent += new Common.ChannelEvents.NotificationSentDelegate(Events_OnNotificationSent);
+			push.Events.OnChannelCreated += new Common.ChannelEvents.ChannelCreatedDelegate(Events_OnChannelCreated);
+			push.Events.OnChannelDestroyed += new Common.ChannelEvents.ChannelDestroyedDelegate(Events_OnChannelDestroyed);
 
 			//Configure and start Apple APNS
 			// IMPORTANT: Make sure you use the right Push certificate.  Apple allows you to generate one for connecting to Sandbox,
@@ -31,8 +38,8 @@ namespace PushSharp.Sample
 			//  (so you would leave the first arg in the ctor of ApplePushChannelSettings as 'false')
 			//  If you are using an AdHoc or AppStore provisioning profile, you must use the Production push notification server
 			//  (so you would change the first arg in the ctor of ApplePushChannelSettings to 'true')
-			push.StartApplePushService(new ApplePushChannelSettings(false, appleCert, "pushsharp"));
-			
+			push.StartApplePushService(new ApplePushChannelSettings(appleCert, "pushsharp"));
+
 			//Configure and start Android GCM
 			//IMPORTANT: The SENDER_ID is your Google API Console App Project ID.
 			//  Be sure to get the right Project ID from your Google APIs Console.  It's not the named project ID that appears in the Overview,
@@ -44,9 +51,9 @@ namespace PushSharp.Sample
 			push.StartWindowsPhonePushService(new WindowsPhonePushChannelSettings());
 
 			//Configure and start Windows Notifications
-			push.StartWindowsPushService(new WindowsPushChannelSettings("BUILD.64beb1a1-5444-4660-8b27-bcc740f9c7ca", 
+			push.StartWindowsPushService(new WindowsPushChannelSettings("BUILD.64beb1a1-5444-4660-8b27-bcc740f9c7ca",
 				"ms-app://s-1-15-2-259456210-2622405444-520366611-1750679940-1314087242-2560077863-3994015833", "7-GIUO1ubmrqOwQUBzXpnqiSw30LS2xr"));
-			
+
 			//Fluent construction of a Windows Toast Notification
 			push.QueueNotification(NotificationFactory.Windows().Toast().AsToastText01("This is a test").ForChannelUri("YOUR_CHANNEL_URI_HERE"));
 
@@ -101,14 +108,24 @@ namespace PushSharp.Sample
 			Console.WriteLine("Failure: " + notification.Platform.ToString() + " -> " + notificationFailureException.Message + " -> " + notification.ToString());
 		}
 
-		static void Events_OnChannelException(Exception exception, Common.Notification notification)
+		static void Events_OnChannelException(Exception exception, Common.PlatformType platformType, Common.Notification notification)
 		{
-			Console.WriteLine("Channel Exception: " + exception.ToString());
+			Console.WriteLine("Channel Exception: " + platformType.ToString() + " -> " + exception.ToString());
 		}
 
 		static void Events_OnDeviceSubscriptionExpired(Common.PlatformType platform, string deviceInfo, Common.Notification notification)
 		{
 			Console.WriteLine("Device Subscription Expired: " + platform.ToString() + " -> " + deviceInfo);
+		}
+
+		static void Events_OnChannelDestroyed(Common.PlatformType platformType, int newChannelCount)
+		{
+			Console.WriteLine("Channel Destroyed for: " + platformType.ToString() + " Channel Count: " + newChannelCount);
+		}
+
+		static void Events_OnChannelCreated(Common.PlatformType platformType, int newChannelCount)
+		{
+			Console.WriteLine("Channel Created for: " + platformType.ToString() + " Channel Count: " + newChannelCount);
 		}
 	}
 }

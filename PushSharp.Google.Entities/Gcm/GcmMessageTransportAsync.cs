@@ -216,42 +216,40 @@ namespace PushSharp.Android
 			var result = new GcmMessageTransportResponse();
 			result.ResponseCode = GcmMessageTransportResponseCode.Error;
 
-			if (asyncParam.WebResponse.StatusCode == HttpStatusCode.Unauthorized)
+			switch (asyncParam.WebResponse.StatusCode)
 			{
-				//401 bad auth token
-				result.ResponseCode = GcmMessageTransportResponseCode.InvalidAuthToken;
-				throw new GcmAuthenticationErrorTransportException(result);
-			}
-			else if (asyncParam.WebResponse.StatusCode == HttpStatusCode.BadRequest)
-			{
-				result.ResponseCode = GcmMessageTransportResponseCode.BadRequest;
-				throw new GcmBadRequestTransportException(result);
-			}
-			else if (asyncParam.WebResponse.StatusCode == HttpStatusCode.ServiceUnavailable)
-			{
-				//First try grabbing the retry-after header and parsing it.
-				TimeSpan retryAfter = new TimeSpan(0, 0, 120);
-
-				var wrRetryAfter = asyncParam.WebResponse.GetResponseHeader("Retry-After");
-
-				if (!string.IsNullOrEmpty(wrRetryAfter))
-				{
-					DateTime wrRetryAfterDate = DateTime.UtcNow;
-
-					if (DateTime.TryParse(wrRetryAfter, out wrRetryAfterDate))
-						retryAfter = wrRetryAfterDate - DateTime.UtcNow;
-					else
+				case HttpStatusCode.Unauthorized:
+					result.ResponseCode = GcmMessageTransportResponseCode.InvalidAuthToken;
+					throw new GcmAuthenticationErrorTransportException(result);
+				case HttpStatusCode.BadRequest:
+					result.ResponseCode = GcmMessageTransportResponseCode.BadRequest;
+					throw new GcmBadRequestTransportException(result);
+				case HttpStatusCode.ServiceUnavailable:
 					{
-						int wrRetryAfterSeconds = 120;
-						if (int.TryParse(wrRetryAfter, out wrRetryAfterSeconds))
-							retryAfter = new TimeSpan(0, 0, wrRetryAfterSeconds);
-					}
-				}
+						//First try grabbing the retry-after header and parsing it.
+						TimeSpan retryAfter = new TimeSpan(0, 0, 120);
 
-				//503 exponential backoff, get retry-after header
-				result.ResponseCode = GcmMessageTransportResponseCode.ServiceUnavailable;
+						var wrRetryAfter = asyncParam.WebResponse.GetResponseHeader("Retry-After");
+
+						if (!string.IsNullOrEmpty(wrRetryAfter))
+						{
+							DateTime wrRetryAfterDate = DateTime.UtcNow;
+
+							if (DateTime.TryParse(wrRetryAfter, out wrRetryAfterDate))
+								retryAfter = wrRetryAfterDate - DateTime.UtcNow;
+							else
+							{
+								int wrRetryAfterSeconds = 120;
+								if (int.TryParse(wrRetryAfter, out wrRetryAfterSeconds))
+									retryAfter = new TimeSpan(0, 0, wrRetryAfterSeconds);
+							}
+						}
+
+						//503 exponential backoff, get retry-after header
+						result.ResponseCode = GcmMessageTransportResponseCode.ServiceUnavailable;
 			
-				throw new GcmServiceUnavailableTransportException(retryAfter, result);
+						throw new GcmServiceUnavailableTransportException(retryAfter, result);
+					}
 			}
 
 			asyncParam.WebResponse.Close();

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Samples\PushSharp.Sample" Label="PushSharp.Sample" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="Platforms\PushSharp.Google.Entities" Label="PushSharp.Google.Entities" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="Platforms\PushSharp.Windows" Label="PushSharp.Windows" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="Platforms\PushSharp.Google" Label="PushSharp.Google" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="Platforms\PushSharp.Blackberry" Label="PushSharp.Blackberry" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="Platforms\PushSharp.Apple" Label="PushSharp.Apple" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="Platforms\PushSharp.WindowsPhone" Label="PushSharp.WindowsPhone" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="PushSharp.Common" Label="PushSharp.Common" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+    <Node Id="PushSharp" Label="PushSharp" Category="Project" />
+    <Node Id="Newtonsoft.Json 4.5.9" Label="Newtonsoft.Json 4.5.9" Category="Package" />
+  </Nodes>
+  <Links>
+    <Link Source="Samples\PushSharp.Sample" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="Platforms\PushSharp.Google.Entities" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="Platforms\PushSharp.Windows" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="Platforms\PushSharp.Google" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="Platforms\PushSharp.Blackberry" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="Platforms\PushSharp.Apple" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="Platforms\PushSharp.WindowsPhone" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="PushSharp.Common" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+    <Link Source="PushSharp" Target="Newtonsoft.Json 4.5.9" Category="Installed Package" />
+  </Links>
+  <Categories>
+    <Category Id="Project" />
+    <Category Id="Package" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+  </Styles>
+</DirectedGraph>

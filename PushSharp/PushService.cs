@@ -7,10 +7,10 @@ namespace PushSharp
 {
 	public class PushService : IDisposable, IPushService
 	{
-		public ChannelEvents Events;
-
 		public bool WaitForQueuesToFinish { get; set; }
-				
+
+		public ChannelEvents Events { get; set; }
+
 		Apple.ApplePushService appleService = null;
 		WindowsPhone.WindowsPhonePushService wpService = null;
 		Windows.WindowsPushService winService = null;

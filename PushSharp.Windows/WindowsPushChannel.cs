@@ -34,7 +34,7 @@ namespace PushSharp.Windows
 			var response = string.Empty;
 
 			try { response = wc.UploadString("https://login.live.com/accesstoken.srf", "POST", postData.ToString()); }
-			catch (Exception ex) { this.Events.RaiseChannelException(ex); }
+			catch (Exception ex) { this.Events.RaiseChannelException(ex, PlatformType.Windows); }
 
 			var json = new JObject();
 
@@ -51,11 +51,20 @@ namespace PushSharp.Windows
 			}
 			else
 			{
-				this.Events.RaiseChannelException(new UnauthorizedAccessException("Could not retrieve access token for the supplied Package Security Identifier (SID) and client secret"));
+				this.Events.RaiseChannelException(new UnauthorizedAccessException("Could not retrieve access token for the supplied Package Security Identifier (SID) and client secret"), PlatformType.Windows);
 			}
 		}
 
 		protected override void SendNotification(Common.Notification notification)
+		{
+			try { sendNotification(notification); }
+			catch (Exception ex)
+			{
+				this.Events.RaiseChannelException(ex, PlatformType.Windows, notification);
+			}
+		}
+
+		void sendNotification(Common.Notification notification)
 		{
 			//See if we need an access token
 			if (string.IsNullOrEmpty(AccessToken))
@@ -84,7 +93,7 @@ namespace PushSharp.Windows
 					break;
 			}
 
-			var request = (HttpWebRequest)HttpWebRequest.Create("https://cloud.notify.windows.com");
+			var request = (HttpWebRequest)HttpWebRequest.Create(winNotification.ChannelUri); // "https://notify.windows.com");
 			request.Method = "POST";
 			request.Headers.Add("X-WNS-Type", wnsType);
 			request.Headers.Add("Authorization", string.Format("Bearer {0}", this.AccessToken));
@@ -225,11 +234,11 @@ namespace PushSharp.Windows
 			}
 			else if (status.HttpStatus == HttpStatusCode.NotFound) //404
 			{
-				Events.RaiseDeviceSubscriptionExpired(PlatformType.Windows, status.Notification.ChannelUri);
+				Events.RaiseDeviceSubscriptionExpired(PlatformType.Windows, status.Notification.ChannelUri, status.Notification);
 			}
 			else if (status.HttpStatus == HttpStatusCode.Gone) //410
 			{
-				Events.RaiseDeviceSubscriptionExpired(PlatformType.Windows, status.Notification.ChannelUri);
+				Events.RaiseDeviceSubscriptionExpired(PlatformType.Windows, status.Notification.ChannelUri, status.Notification);
 			}
 
 			Events.RaiseNotificationSendFailure(status.Notification, new WindowsNotificationSendFailureException(status));

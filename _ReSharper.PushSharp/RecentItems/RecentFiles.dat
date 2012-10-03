@@ -1,4 +1,25 @@
 ﻿<RecentFiles>
-  <RecentFiles />
-  <RecentEdits />
+  <RecentFiles>
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmExceptions.cs" caret="0" fromTop="0" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmFluentNotification.cs" caret="0" fromTop="0" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmMessageTransportAsync.cs" caret="79" fromTop="3" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmMessageTransportResponse.cs" caret="0" fromTop="0" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmNotification.cs" caret="0" fromTop="0" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:app.config" caret="0" fromTop="0" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="321" fromTop="0" />
+    <File id="0EC3A31E-B869-4465-ABDC-90C2E3CCC17D/f:WindowsPushChannel.cs" caret="1420" fromTop="18" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmExceptions.cs" caret="0" fromTop="0" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmFluentNotification.cs" caret="0" fromTop="0" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmMessageTransportAsync.cs" caret="79" fromTop="3" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmMessageTransportResponse.cs" caret="0" fromTop="0" />
+    <File id="8AE729FD-DA50-4E4F-BE39-1F9FD468C29F/d:Gcm/f:GcmNotification.cs" caret="0" fromTop="0" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="1288" fromTop="7" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="1866" fromTop="13" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="3090" fromTop="30" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="3887" fromTop="33" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="4469" fromTop="32" />
+    <File id="1B9A3A8B-3690-4435-BF9C-B557BF2713DB/f:Program.cs" caret="4905" fromTop="4" />
+  </RecentEdits>
 </RecentFiles>

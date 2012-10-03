@@ -5,6 +5,7 @@ namespace PushSharp
 	public interface IPushService
 	{
 		bool WaitForQueuesToFinish { get; set; }
+		ChannelEvents Events { get; set; }
 		void StartApplePushService(Apple.ApplePushChannelSettings channelSettings, PushServiceSettings serviceSettings = null);
 		void StopApplePushService(bool waitForQueueToFinish = true);
 		void StartGoogleCloudMessagingPushService(Android.GcmPushChannelSettings channelSettings, PushServiceSettings serviceSettings = null);
