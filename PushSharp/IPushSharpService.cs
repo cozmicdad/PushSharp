@@ -2,7 +2,7 @@
 
 namespace PushSharp
 {
-	public interface IPushService
+	public interface IPushSharpService
 	{
 		bool WaitForQueuesToFinish { get; set; }
 		ChannelEvents Events { get; set; }

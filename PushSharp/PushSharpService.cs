@@ -5,7 +5,7 @@ using PushSharp.Common;
 
 namespace PushSharp
 {
-	public class PushService : IDisposable, IPushService
+	public class PushSharpService : IDisposable, IPushSharpService
 	{
 		public bool WaitForQueuesToFinish { get; set; }
 
@@ -17,18 +17,18 @@ namespace PushSharp
 		Blackberry.BlackberryPushService bbService = null;
 		Android.GcmPushService gcmService = null;
 
-		static PushService instance = null;
-		public static PushService Instance
+		static PushSharpService instance = null;
+		public static PushSharpService Instance
 		{
-			get { return instance ?? (instance = new PushService()); }
+			get { return instance ?? (instance = new PushSharpService()); }
 		}
 
-		public PushService()
+		public PushSharpService()
 		{
 			this.Events = new ChannelEvents();
 		}
 
-		public PushService(bool waitForQueuesToFinish) : this()
+		public PushSharpService(bool waitForQueuesToFinish) : this()
 		{
 			this.WaitForQueuesToFinish = waitForQueuesToFinish;
 		}
